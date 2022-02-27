@@ -14,14 +14,20 @@ but you can use transform="scale(1, -1)" to invert that.
 		https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/SVG_and_CSS
 	-->
 	<style>
+		:root {
+			--text-color: rgb(214, 100, 40);
+		}
 		.axis {
 			stroke-width: 1;
-			stroke: rgb(200, 200, 200);
+			stroke: var(--text-color);
 		}
 		text {
 			fill: rgb(200, 200, 200);
 			font-size: 8px;
 			text-anchor: middle;
+		}
+		.orange {
+			fill: var(--text-color);
 		}
 	</style>
 
@@ -31,16 +37,16 @@ but you can use transform="scale(1, -1)" to invert that.
 	This path consists of line segments (L).
 	-->
 	<path
-		d="M 0 100 L 25 75 L 50 50 L 75 40 L 100 70 L 125 80 L 150 70 L 175 40 L 200 15 V 100 Z"
-		fill="rgb(0, 44, 122)"
-		stroke="rgb(0, 156, 250)"
+		d="M 0 100 L 0 90 L 25 40 L 50 35 L 75 45 L 100 70 L 125 90 L 150 65 L 175 40 L 200 35 V 100 Z"
+		fill="rgb(59, 119, 59)"
+		stroke="rgb(125, 249, 90)"
 		stroke-width="0.75"
 	/>
 
 	<!-- Axis lines, the color and thickness is set by the stylesheet
 		https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line
 	-->
-	<line class="axis" x1="-5" y1="100" x2="205" y2="100"  />
+	<line class="axis" x1="-5" y1="100" x2="205" y2="100"/>
 	<line class="axis" x1="0" y1="105" x2="0" y2="-5"/>
 
 	<!--
@@ -48,7 +54,7 @@ but you can use transform="scale(1, -1)" to invert that.
 	We set the color for all of them using a group
 	https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
 	-->
-	<g id="red-dots-plot" fill="rgb(255, 0, 0)">
+	<g id="red-dots-plot" fill="yellow">
 		<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle -->
 		<circle cx="0" cy="75" r="1" />
 		<circle cx="25" cy="65" r="1" />
@@ -62,11 +68,13 @@ but you can use transform="scale(1, -1)" to invert that.
 	</g>
 
 
+	<line stroke-width="0.75" stroke="var(--text-color)" x1="50" y1="45" x2="70" y2="25" />
+	<text x="75" y="20" class="orange">important event!</text>
 
-	<text x="50%" y="110">time</text>
+	<text x="50%" y="110" class="orange">time</text>
 
 	<!-- The group positions the text by the translate transform, the text element inside is rotated around the point -->
 	<g transform="translate(-4, 50)">
-		<text transform="rotate(-90)">population</text>
+		<text transform="rotate(-90)" class="orange">population</text>
 	</g>
 </svg>
